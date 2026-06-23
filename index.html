@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English for Communication Club – RPT-0020</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700;900&display=swap');
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Battambang";
+    }
+    :root {
+      --navy: #0f1f4b;
+      --navy-mid: #1a2f6a;
+      --navy-light: #2d4a9e;
+      --gold: #f59e0b;
+      --green: #059669;
+      --blue: #2563eb;
+      --blue-soft: #dbeafe;
+      --red: #dc2626;
+      --teal: #0d9488;
+      --border: #e5e7eb;
+      --muted: #6b7280;
+      --bg-soft: #f8fafc;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #e8edf6;
+      min-height: 100vh;
+      padding: clamp(1rem, 4vw, 2.5rem) clamp(0.75rem, 3vw, 1.5rem);
+    }
+
+    /* ── Card wrapper ── */
+    .report-card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(15, 31, 75, 0.12);
+      overflow: hidden;
+    }
+
+    /* ════════ HEADER ════════ */
+    .rpt-header {
+      background: linear-gradient(120deg, var(--navy) 0%, var(--navy-mid) 60%, #1c3d8f 100%);
+      padding: clamp(16px, 4vw, 28px) clamp(16px, 4vw, 32px) clamp(14px, 3vw, 22px);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rpt-header::before {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      right: -60px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+    }
+
+    .rpt-header img {
+      width: 90px;
+      height: 90px;
+      margin-bottom: 10px;
+    }
+
+    .rpt-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.05rem, 4vw, 1.55rem);
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+
+    .rpt-sub {
+      font-size: clamp(0.65rem, 2vw, 0.78rem);
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 12px;
+    }
+
+    .badge-rpt {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--gold);
+      color: #1a1a1a;
+      font-size: clamp(0.62rem, 2vw, 0.72rem);
+      font-weight: 600;
+      padding: 4px 11px;
+      border-radius: 8px;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+    }
+
+    .rpt-header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 120px;
+    }
+    .avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+    .rpt-date {
+      font-size: 14px;
+      color: var(--gold);
+    }
+
+    /* ════════ BODY ════════ */
+    .rpt-body {
+      padding: clamp(14px, 4vw, 26px) clamp(14px, 4vw, 28px) clamp(18px, 5vw, 32px);
+    }
+
+    /* ── Info grid ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 380px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 14px;
+    }
+
+    .info-label {
+      font-size: 0.62rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 2px;
+    }
+
+    .info-value {
+      font-size: clamp(0.85rem, 2.5vw, 1rem);
+      font-weight: 600;
+      color: #111827;
+    }
+
+    /* ── Stat cards ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 480px) {
+      .stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat-card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: clamp(11px, 3vw, 16px) 8px clamp(10px, 2.5vw, 13px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .sc-green::before {
+      background: var(--green);
+    }
+
+    .sc-blue::before {
+      background: var(--blue);
+    }
+
+    .sc-teal::before {
+      background: var(--teal);
+    }
+
+    .sc-red::before {
+      background: var(--red);
+    }
+
+    .stat-lbl {
+      display: block;
+      font-size: clamp(0.55rem, 1.5vw, 0.63rem);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .stat-val {
+      font-size: clamp(1.35rem, 5vw, 1.8rem);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .sv-green {
+      color: var(--green);
+    }
+
+    .sv-blue {
+      color: var(--blue);
+    }
+
+    .sv-teal {
+      color: var(--teal);
+    }
+
+    .sv-red {
+      color: var(--red);
+    }
+
+    /* ── Grade legend ── */
+    .grade-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .gp {
+      font-size: clamp(0.62rem, 2vw, 0.72rem);
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .gp-A {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .gp-B {
+      background: #dbeafe;
+      color: #1e3a8a;
+    }
+
+    .gp-C {
+      background: #ede9fe;
+      color: #4c1d95;
+    }
+
+    .gp-D {
+      background: #fef3c7;
+      color: #78350f;
+    }
+
+    .gp-E {
+      background: #ffedd5;
+      color: #7c2d12;
+    }
+
+    .gp-F {
+      background: #fee2e2;
+      color: #7f1d1d;
+    }
+
+    /* ── Section heading ── */
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: clamp(0.82rem, 2.5vw, 0.95rem);
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .sec-badge {
+      font-size: 0.6rem;
+      background: var(--navy);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* scroll hint — only phones */
+    .scroll-hint {
+      display: none;
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-align: right;
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 580px) {
+      .scroll-hint {
+        display: block;
+      }
+    }
+
+    /* ── Table ── */
+    .table-scroll {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .styled-table {
+      width: 100%;
+      min-width: 540px;
+      border-collapse: collapse;
+      font-size: clamp(0.7rem, 2vw, 0.82rem);
+    }
+
+    .styled-table thead tr {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .styled-table thead th {
+      padding: 10px 10px;
+      font-weight: 500;
+      text-align: center;
+      font-size: clamp(0.62rem, 1.8vw, 0.73rem);
+      white-space: nowrap;
+      border: none;
+      vertical-align: bottom;
+    }
+
+    .styled-table thead th:first-child {
+      text-align: left;
+    }
+
+    .styled-table thead th.col-gold {
+      background: var(--gold);
+      color: #1a1a1a;
+    }
+
+    .styled-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.12s;
+    }
+
+    .styled-table tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    .styled-table tbody tr:nth-child(even) {
+      background: #fafbff;
+    }
+
+    .styled-table tbody tr:hover {
+      background: #eff3ff;
+    }
+
+    .styled-table tbody td {
+      padding: 9px 10px;
+      text-align: center;
+      color: #374151;
+      border: none;
+      white-space: nowrap;
+    }
+
+    .styled-table tbody td:first-child {
+      text-align: left;
+      color: var(--muted);
+    }
+
+    .score-num {
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    .grade-b {
+      display: inline-block;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+
+    .td-comment {
+      text-align: left !important;
+      max-width: 160px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--muted) !important;
+      font-size: 0.68rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="report-card">
+
+    <!-- HEADER -->
+    <div class="rpt-header">
+      <div>
+        <img src="logo-removebg-preview.png" alt="">
+        <h1 class="rpt-title">English for Communication Club</h1>
+        <!-- <p class="rpt-sub">វេទិកាភាសាខ្មែរ</p>
+      <span class="badge-rpt">📋 RPT-0020</span> -->
+      </div>
+      <div class="rpt-header-right">
+        <div class="avatar">
+          <img src="./image.png" alt="">
+        </div>
+        <span class="rpt-date">ថ្ងៃខែឆ្នាំកំណើត: ០៦ តុលា ឆ្នាំ២០១០</span>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="rpt-body">
+
+      <!-- Student / Class -->
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-label">ឈ្មោះសិស្ស</div>
+          <div class="info-value">Soy Monyrachana</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">ថ្នាក់រៀន</div>
+          <div class="info-value">English Grammar</div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <!-- <div class="stat-grid">
+        <div class="stat-card sc-green">
+          <span class="stat-lbl">ពិន្ទុចុងក្រោយ</span>
+          <div class="stat-val sv-green">87.0</div>
+        </div>
+        <div class="stat-card sc-blue">
+          <span class="stat-lbl">បញ្ចូលគត</span>
+          <div class="stat-val sv-blue">87.0</div>
+        </div>
+        <div class="stat-card sc-teal">
+          <span class="stat-lbl">ពិន្ទុសរុបរួម</span>
+          <div class="stat-val sv-teal">87.0</div>
+        </div>
+        <div class="stat-card sc-red">
+          <span class="stat-lbl">អវត្តមាន</span>
+          <div class="stat-val sv-red">0%</div>
+        </div>
+      </div> -->
+      <div class="sec-head">
+        📊 តារាងព្រិត្តិបត្តិពិន្ទុសិស្ស
+        <span class="sec-badge">ប្រឡងបញ្ចប់ការសិក្សា</span>
+      </div>
+      <div class="table-scroll">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th style="text-align:left; min-width:76px;">ថ្ងៃទទួល</th>
+              <th>Monthly Test</th>
+              <th>Final Test</th>
+              <th class="col-gold">សរុប</th>
+              <th>និទ្ទេស</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>២៣ មិថុនា ឆ្នាំ២០២៦</td>
+              <td>50</td>
+              <td>46</td>
+              <td class="score-num">96</td>
+              <td><span class="grade-b">ល្អ</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div><!-- /rpt-body -->
+  </div><!-- /report-card -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
